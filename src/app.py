@@ -1,4 +1,4 @@
-from flask import Flask, redirect, request, json
+from flask import Flask, request
 import requests
 from services.user_taste_classifier import GenreClassifier
 
@@ -7,13 +7,6 @@ app = Flask(__name__)
 model = GenreClassifier()
 
 frontend_evaluation_endpoint = 'http://127.0.0.1:5000/evaluation'
-
-@app.route('/')
-def home():
-	model.massage_data()
-	model.processing()
-	model.train()
-	return redirect("/train")
 
 
 @app.route('/predict', methods=["GET", "POST"])
@@ -28,7 +21,11 @@ def predict():
 	print("🌸", req_data["title"], track, "🎀")
 	print("💕", model.predict([track]), "✨")
 	prediction = model.predict([track])
-	resp = requests.post(frontend_evaluation_endpoint, data=prediction[0])
+	
+	resp = requests.post(frontend_evaluation_endpoint, json={'prediction': prediction[0],
+	                                                         'track_id': req_data["track_id"],
+	                                                         'title': req_data["title"],
+	                                                         'user_id': req_data['user_id']})
 	print("🍄", resp)
 	return "<h1>time to train the model</h1>"
 

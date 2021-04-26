@@ -12,6 +12,7 @@ in your terminal run
 ```shell script
 conda create -n spotify python=3
 source activate spotify
+cd src
 conda install flask
 conda install pandas
 conda install scikit-learn
