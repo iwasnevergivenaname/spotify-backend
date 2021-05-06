@@ -19,8 +19,8 @@ conda install scikit-learn
 conda install jupyter notebook
 conda install numpy
 conda install requests
-export FLASK_RUN_PORT=8000
-FLASK_ENV=development flask run
+export FLASK_RUN_PORT=5500 FLASK_ENV=development 
+flask run
 ```
 
 ## to play around with the data
