@@ -2,12 +2,11 @@ from sklearn.tree import DecisionTreeClassifier
 import numpy as np
 import pandas as pd
 
-
 # pd.set_option('display.max_rows', genre_data.shape[0]+1)
 
 class GenreClassifier:
 	def __init__(self):
-		self.path = 'data/data_by_genres.csv'
+		self.path = 'src/data/data_by_genres.csv'
 		self.data = pd.read_csv(self.path)
 		self.df_x = None
 		self.df_y = None

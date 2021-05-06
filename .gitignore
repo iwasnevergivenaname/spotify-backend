@@ -4,3 +4,4 @@ test
 .ipynd_checkpoints
 Dockerfile
 #src/Procfile
+src/docker-compose.yml
