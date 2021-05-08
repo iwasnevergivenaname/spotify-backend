@@ -2,6 +2,6 @@ __pycache__/
 .idea
 test
 .ipynd_checkpoints
-Dockerfile
+#Dockerfile
 #src/Procfile
 src/docker-compose.yml
