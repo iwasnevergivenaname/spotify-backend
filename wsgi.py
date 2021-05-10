@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 model = GenreClassifier()
 
-frontend_evaluation_endpoint = 'https://spotify-evaluation.herokuapp.com/evaluation'
+frontend_evaluation_endpoint = 'http://127.0.0.1:5000/evaluation'
 
 
 @app.route('/', methods=["GET"])
