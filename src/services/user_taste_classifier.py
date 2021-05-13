@@ -1,6 +1,7 @@
 from sklearn.tree import DecisionTreeClassifier
 import numpy as np
 import pandas as pd
+from .constants import acousticness, danceability, valence, popularity, speechiness, energy
 
 # pd.set_option('display.max_rows', genre_data.shape[0]+1)
 
@@ -136,7 +137,7 @@ class GenreClassifier:
 		
 	
 	def processing(self):
-		cols = ["acousticness", "danceability", "energy", "speechiness", "valence", "popularity"]
+		cols = [acousticness, danceability, energy, speechiness, valence, popularity]
 		self.df_x = self.data[cols].values
 		self.df_y = self.data[['genres']].values
 	

@@ -1,10 +1,19 @@
 from flask import Flask, request
 import requests
 from src.services.user_taste_classifier import GenreClassifier
+from src.services.constants import acousticness, danceability, valence, popularity, speechiness, energy
 
 app = Flask(__name__)
 
 model = GenreClassifier()
+
+
+@app.before_first_request
+def model_init():
+	model.massage_data()
+	model.processing()
+	model.train()
+
 
 frontend_evaluation_endpoint = 'http://127.0.0.1:5000/evaluation'
 
@@ -16,13 +25,10 @@ def health():
 
 @app.route('/predict', methods=["GET", "POST"])
 def predict():
-	model.massage_data()
-	model.processing()
-	model.train()
 	req_data = request.get_json()
-	track = [float(req_data["acousticness"]), float(req_data["danceability"]), float(req_data["energy"]),
-	         float(req_data["speechiness"]), float(req_data["valence"]),
-	         float(req_data["popularity"])]
+	track = [float(req_data[acousticness]), float(req_data[danceability]), float(req_data[energy]),
+	         float(req_data[speechiness]), float(req_data[valence]),
+	         float(req_data[popularity])]
 	prediction = model.predict([track])
 	
 	resp = requests.post(frontend_evaluation_endpoint, json={'prediction': prediction[0],
