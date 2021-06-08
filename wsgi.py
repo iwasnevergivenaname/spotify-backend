@@ -15,7 +15,7 @@ def model_init():
 	model.train()
 
 
-frontend_evaluation_endpoint = 'http://127.0.0.1:5000/evaluation'
+frontend_evaluation_endpoint = 'https://spotify-evaluation.herokuapp.com/evaluation'
 
 
 @app.route('/', methods=["GET"])
