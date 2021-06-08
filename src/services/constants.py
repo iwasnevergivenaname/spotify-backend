@@ -1,12 +1,9 @@
-from collections import defaultdict
-
-consts = defaultdict(str)
-consts.energy = 'energy'
-consts.danceability = 'danceability'
-consts.acousticness = 'acousticness'
-consts.speechiness = 'speechiness'
-consts.valence = 'valence'
-consts.popularity = 'popularity'
-consts.dance = 'danceability'
-consts.acoustic = 'acousticness'
-consts.speech = 'speechiness'
+energy = 'energy'
+danceability = 'danceability'
+acousticness = 'acousticness'
+speechiness = 'speechiness'
+valence = 'valence'
+popularity = 'popularity'
+dance = 'danceability'
+acoustic = 'acousticness'
+speech = 'speechiness'
