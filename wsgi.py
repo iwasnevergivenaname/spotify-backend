@@ -25,10 +25,10 @@ def health():
 
 @app.route('/predict', methods=["GET", "POST"])
 def predict():
-	print("🎾🎾")
-	print("predict")
-	print("🎾🎾")
 	req_data = request.get_json()
+	print("🎾🎾")
+	print(req_data)
+	print("🎾🎾")
 	track = [float(req_data[acousticness]), float(req_data[danceability]), float(req_data[energy]),
 	         float(req_data[speechiness]), float(req_data[valence]),
 	         float(req_data[popularity])]
