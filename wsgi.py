@@ -20,7 +20,7 @@ frontend_evaluation_endpoint = 'https://spotify-evaluation.herokuapp.com/evaluat
 
 @app.route('/', methods=["GET"])
 def health():
-	# return "this app works"
+	return "this app works"
 
 
 @app.route('/predict', methods=["GET", "POST"])
