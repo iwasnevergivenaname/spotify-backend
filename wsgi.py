@@ -28,9 +28,9 @@ def predict():
 	req_data = request.get_json()
 	print("🎾🎾")
 	print(req_data)
-	for k, i in enumerate(req_data):
-		if req_data[k] == None:
-			req_data[k] = 0.0
+	for key in req_data:
+		if req_data[key] == None:
+			req_data[key] = 0.0
 	print("🎾🎾")
 	track = [float(req_data[acousticness]), float(req_data[danceability]), float(req_data[energy]),
 	         float(req_data[speechiness]), float(req_data[valence]),
