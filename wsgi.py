@@ -20,7 +20,7 @@ frontend_evaluation_endpoint = 'https://spotify-evaluation.herokuapp.com/evaluat
 
 @app.route('/', methods=["GET"])
 def health():
-	return "this app works"
+	# return "this app works"
 
 
 @app.route('/predict', methods=["GET", "POST"])
@@ -28,10 +28,13 @@ def predict():
 	req_data = request.get_json()
 	print("🎾🎾")
 	print(req_data)
-	# print("🎾🎾")
-	track = [float(req_data[acousticness]) or 0.0, float(req_data[danceability]) or 0.0, float(req_data[energy]) or 0.0,
-	         float(req_data[speechiness]) or 0.0, float(req_data[valence]) or 0.0,
-	         float(req_data[popularity])or 0.0]
+	for k, i in enumerate(req_data):
+		if req_data[k] == None:
+			req_data[k] = 0.0
+	print("🎾🎾")
+	track = [float(req_data[acousticness]), float(req_data[danceability]), float(req_data[energy]),
+	         float(req_data[speechiness]), float(req_data[valence]),
+	         float(req_data[popularity])]
 	prediction = model.predict([track])
 	print("🎀🎀")
 	print(prediction)
